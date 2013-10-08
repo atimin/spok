@@ -1,0 +1,5 @@
+int8    joint
+float32 angle
+float32 velocity
+---
+int16 status
