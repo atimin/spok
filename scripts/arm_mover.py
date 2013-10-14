@@ -7,18 +7,21 @@ import math
 import time
 from spok.srv import *
 
+def get_joint(i):
+  return [0, 1, 3, 4, 5][i]
+
 def handle_turn_joint(req):
   # Open port
   sp = open_serialport()    
   try:
     # Send command and close port
     # TODO: Replace the building of the command to another method.
-    if req.joint in [1,2]:
+    if req.joint in [1]:
       # Servos number #1 and #2 are on a joint
       send_cmd(sp, "MOVE[SERV=1 ANGLE=%.3f VEL=%.3f]" % (math.pi - req.angle, req.velocity))
       respond = send_cmd(sp, "MOVE[SERV=2 ANGLE=%.3f VEL=%.3f]" % (req.angle, req.velocity))
     else:
-      respond = send_cmd(sp, "MOVE[SERV=%i ANGLE=%.3f VEL=%.3f]" % (req.joint, req.angle, req.velocity))
+      respond = send_cmd(sp, "MOVE[SERV=%i ANGLE=%.3f VEL=%.3f]" % (get_joint(req.joint), req.angle, req.velocity))
   finally:
     sp.close
 
@@ -32,7 +35,7 @@ def handle_turn_joint(req):
 def handle_get_joint_status(req):
   sp = open_serialport()
   try:
-    respond = send_cmd(sp, "STATUS[SERV=%i]\n" % (req.joint))
+    respond = send_cmd(sp, "STATUS[SERV=%i]\n" % (get_joint(req.joint)))
   finally:
     sp.close()
 
