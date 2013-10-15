@@ -1,0 +1,20 @@
+<library path="src">
+  <class name="VSlider" type="joint_slider.v_slider.VSlider" base_class_type="rqt_gui_py::Plugin">
+    <description>
+      Vertical slider to control joint of robot-arm
+    </description>
+    <qtgui>
+      <!-- optional grouping...
+      <group>
+        <label>Group</label>
+      </group>
+      <group>
+        <label>Subgroup</label>
+      </group>
+      -->
+      <label>Slider to control joint</label>
+      <icon type="theme">system-help</icon>
+      <statustip></statustip>
+    </qtgui>
+  </class>
+</library>
