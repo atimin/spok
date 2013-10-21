@@ -49,7 +49,7 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES spok
+   LIBRARIES spok
 #  CATKIN_DEPENDS rospy
 #  DEPENDS system_lib
 )

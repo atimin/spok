@@ -92,28 +92,28 @@ class VSlider(Plugin):
 
 
     def change_joint(self, index):
-      self._joint = index
+        self._joint = index
 
 
     def timer_tick(self):
-      angle = self._status_joint(self._joint).angle
-      self._widget.currentAngle.setText(str(angle))
+        angle = self._status_joint(self._joint).angle
+        self._widget.currentAngle.setText(str(angle))
 
 
     def change_angle(self, value):
-      self._angle_changed = True
-      angle = math.pi * (float(value) / 100)
-      vel = abs((angle - self._last_angle)
+        self._angle_changed = True
+        angle = math.pi * (float(value) / 100)
+        vel = abs((angle - self._last_angle)
                 / (time.time() - self._time_last_change))
 
-      vel = self._alfa*vel + ((1 - self._alfa)
-          *self._last_vel)
-      vel = max(vel, 0.2)
-      vel = min(vel, 1)
-      self._turn_joint(self._joint, angle, vel)
-      self._time_last_change = time.time()
-      self._last_angle = angle
-      self._last_vel = vel
+        vel = self._alfa*vel + ((1 - self._alfa)
+            *self._last_vel)
+        vel = max(vel, 0.2)
+        vel = min(vel, 1)
+        self._turn_joint(self._joint, angle, vel)
+        self._time_last_change = time.time()
+        self._last_angle = angle
+        self._last_vel = vel
 
     def shutdown_plugin(self):
         # TODO unregister all publishers here
