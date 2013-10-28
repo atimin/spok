@@ -30,6 +30,7 @@ add_service_files(
   FILES
   TurnJoint.srv
   StatusJoint.srv
+  MoveToPoint.srv
 )
 
 ## Generate added messages and services with any dependencies listed here
@@ -49,7 +50,7 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-   LIBRARIES spok
+#  LIBRARIES spok
 #  CATKIN_DEPENDS rospy
 #  DEPENDS system_lib
 )
